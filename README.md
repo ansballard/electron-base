@@ -3,7 +3,6 @@
 ## Table of Contents
 
 1. [About](#about)
-1. [Writeup](#writeup)
 1. [Directory Structure](#directory-structure)
 1. [Build System](#build-system)
 1. [Items to Add](#items-to-add)
@@ -14,10 +13,6 @@
 This is a starter repo for creating Electron apps using [Browserify](http://browserify.org/) and [Angular 1.x](https://angularjs.org/), based on the [John Papa Styleguide](https://github.com/johnpapa/angular-styleguide). Some differences are to use ES6 modules with [babel](https://babeljs.io/), Browserify instead of Gulp or Grunt, ESLint instead of JSHint, and a few other smaller changes.
 
 The purpose of this repo is to have a jumping off point for generally any Electron app with npm scripts to handle javascript bundling, transpiling, and app packaging to an executable. As long as you continue to use Browserify and ES6 modules, there shouldn't be any changes necessary to the npm scripts, as they are purposefully generic. The most basic scripts are provided to run the Electron backend, and example modules are given to show how routes, services, and other module types should be written.
-
-## Writeup
-
-There is a writeup on codepen.io that goes through setting up Electron, Browserify, and Angular more generally that may help understand this repo. [Link to upcoming post](#).
 
 ## Directory Structure
 
