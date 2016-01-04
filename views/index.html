@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron Base</title>
+    <link type="text/css" rel="stylesheet" href="../dist/styles.css"/>
+  </head>
+  <body>
+    <h1>Hello, electron-base!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <div ng-app="electron-base" ng-controller="WrapperController as vm" ng-jq ng-strict-di>
+      <h1>Wrapper</h1>
+      <h2>Ng Route</h2>
+      <div ng-view></div>
+    </div>
+
+    <script type="text/javascript" src="../dist/frontend.js"></script>
+  </body>
+</html>

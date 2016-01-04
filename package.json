@@ -1,0 +1,46 @@
+{
+  "name": "electron-base",
+  "version": "0.0.0",
+  "description": "A base for making es6/angular 1.x electron apps",
+  "main": "dist/electron/main.js",
+  "scripts": {
+    "start": "electron ./dist/electron/main.js",
+    "dev": "concurrent --kill-others \"npm run start\" \"npm run watch:electron\" \"npm run watch:frontend\"",
+    "predev": "npm run build",
+    "build:electron": "babel ./src/electron --out-dir ./dist/electron",
+    "watch:electron": "babel ./src/electron --out-dir ./dist/electron -w",
+    "deploy:electron": "npm run build:electron",
+    "build:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] -o ./dist/frontend.js -dv",
+    "watch:frontend": "watchify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] -o ./dist/frontend.js -dv",
+    "deploy:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] | uglifyjs -mc --screw-ie8 > ./dist/frontend.js",
+    "build": "concurrent \"npm run build:electron\" \"npm run build:frontend\"",
+    "watch": "concurrent --kill-others \"npm run watch:electron\" \"npm run watch:frontend\"",
+    "deploy": "concurrent \"npm run deploy:electron\" \"npm run deploy:frontend\"",
+    "predeploy": "eslint src",
+    "package": "electron-packager ./ ElectronBase --out deploy --arch x64 --platform linux --version 0.36.2 --asar 1 --overwrite 1 --ignore=node_modules",
+    "prepackage": "npm run deploy",
+    "prepublish": "npm run deploy"
+  },
+  "author": "Aaron Ballard",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "concurrently": "^1.0.0",
+    "css-modulesify": "^0.16.1",
+    "cssnano": "^3.4.0",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
+    "eslint": "^1.10.3",
+    "partialify": "^3.1.5",
+    "uglify-js": "^2.6.1",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.6.1"
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8"
+  }
+}
