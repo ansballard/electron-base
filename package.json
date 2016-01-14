@@ -4,15 +4,18 @@
   "description": "A base for making es6/angular 1.x electron apps",
   "main": "dist/electron/main.js",
   "scripts": {
+    "start:electron": "electron ./dist/electron/main.js",
+    "start:express": "node dist/express/index.js",
     "start": "electron ./dist/electron/main.js",
     "dev": "concurrent --kill-others \"npm run start\" \"npm run watch:electron\" \"npm run watch:frontend\"",
     "predev": "npm run build",
+    "build:express": "babel ./src/express --out-dir ./dist/express",
     "build:electron": "babel ./src/electron --out-dir ./dist/electron",
     "watch:electron": "babel ./src/electron --out-dir ./dist/electron -w",
     "deploy:electron": "npm run build:electron",
-    "build:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] -o ./dist/frontend.js -dv",
-    "watch:frontend": "watchify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] -o ./dist/frontend.js -dv",
-    "deploy:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/styles.css] | uglifyjs -mc --screw-ie8 > ./dist/frontend.js",
+    "build:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/frontend/styles.css] -o ./dist/frontend/bundle.js -dv",
+    "watch:frontend": "watchify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/frontend/styles.css] -o ./dist/frontend/bundle.js -dv",
+    "deploy:frontend": "browserify ./src/frontend.entry.js --exclude electron -t [babelify] -t [partialify] -p [css-modulesify -u cssnano -o ./dist/frontend/styles.css] | uglifyjs -mc --screw-ie8 > ./dist/frontend/bundle.js",
     "build": "concurrent \"npm run build:electron\" \"npm run build:frontend\"",
     "watch": "concurrent --kill-others \"npm run watch:electron\" \"npm run watch:frontend\"",
     "deploy": "concurrent \"npm run deploy:electron\" \"npm run deploy:frontend\"",
@@ -41,6 +44,9 @@
   },
   "dependencies": {
     "angular": "^1.4.8",
-    "angular-route": "^1.4.8"
+    "angular-route": "^1.4.8",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5"
   }
 }
