@@ -1,10 +1,10 @@
 import homeTemplate from "../routes/home/home.template.html";
 
-ModuleConfig.$inject = ["$routeProvider"];
+ModuleConfig.$inject = ["$routeProvider", "$locationProvider"];
 
 export default ModuleConfig;
 
-function ModuleConfig($routeProvider) {
+function ModuleConfig($routeProvider, $locationProvider) {
 
   $routeProvider
     .when("/", {
@@ -13,8 +13,15 @@ function ModuleConfig($routeProvider) {
       controllerAs: "vm",
       bindToController: true
     })
+    .when("/hello", {
+      template: "Hello World! <a ng-href=\"/\">Home</a>"
+    })
     .otherwise({
       redirectTo: "/"
     });
 
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 }

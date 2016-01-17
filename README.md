@@ -32,18 +32,29 @@ Within `src`, `.babelrc` configures babel to use an es2015 preset. `.eslintrc` h
 
 The build system is all based on Browserify, Babel, and Electron. The frontend javascript and css is pulled in by Browserify and bundled into two files. Babel is used to transpile within Browserify, as well as transpile Electron code directly. Electron-prebuilt and electron-packager are used to run the app locally and package it into an executable, respectively.
 
-All commands are handled through npm scripts.
+The most common workflow is to pick an environment, and run the appropriate `dev` script. So to run and compile the electron app, you would execute `npm run dev:electron`. This would build the app, start it, and recompile on changes to either electron or frontend files.
 
-1. `npm start` - Run the app locally
-1. `npm run dev` - Build, run the app, and watch for code changes
+1. `npm start:electron` - Run the electron app locally
+1. `npm start:express` - Run the express server locally at http://localhost:3000
+1. `npm run dev:electron` - Run and recompile the electron app on frontend changes
+1. `npm run dev:express` - Run and recompile the express server on frontend changes
 1. `npm run build` - Transpile and bundle code (not minified)
-  - `:electron` - Only on electron files
-  - `:frontend` - Only on frontend files
+  - `:electron:only` - Only on electron files
+  - `:express:only` - Only on express files
+  - `:electron` - Electron and frontend files
+  - `:express` - Express and frontend files
+  - `:frontend` - Only frontend files
 1. `npm run watch` - Build all files and rebuild on changes
-  - `:electron` - Only on electron files
+  - `:electron:only` - Only on electron files
+  - `:express:only` - Only on express files
+  - `:electron` - Electron and frontend files
+  - `:express` - Express and frontend files
   - `:frontend` - Only on frontend files
 1. `npm run deploy` - Build all files (minified)
-  - `:electron` - Only on electron files
+  - `:electron:only` - Only on electron files
+  - `:express:only` - Only on express files
+  - `:electron` - Electron and frontend files
+  - `:express` - Express and frontend files
   - `:frontend` - Only on frontend files
 1. `npm run package` - Deploy files and package the app into an executable
 

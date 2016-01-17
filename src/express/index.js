@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(methodOverride());
-app.use(express.static("dist/frontend"));
+app.use("/dist/frontend", express.static(path.join(__dirname, "..", "frontend")));
+console.log("Path: ", path.join(__dirname, "..", "frontend"));
 
 routes(app);
 
