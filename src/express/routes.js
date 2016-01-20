@@ -1,5 +1,6 @@
 export default (app) => {
   app.get("/", (req, res) => {
+    console.log(__dirname);
     res.sendFile("index.html", {
       root: "views/"
     }, (err) => {

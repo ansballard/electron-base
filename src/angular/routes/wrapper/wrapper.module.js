@@ -1,4 +1,4 @@
 import WrapperController from "./wrapper.controller";
 
-angular.module("electron-base.wrapper", [])
+angular.module("app.wrapper", [])
   .controller("WrapperController", WrapperController);

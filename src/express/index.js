@@ -5,10 +5,13 @@ const app = express();
 
 import http from "http";
 import path from "path";
-
 import routes from "./routes";
 
-const ip = process.env.NODEJS_IP || "127.0.0.1";
+import { sum } from "../utilities";
+
+console.log("sum: " + sum(1, 2));
+
+const ip = process.env.NODEJS_IP || "0.0.0.0";
 const port = process.env.NODEJS_PORT || 3000;
 
 app.set("port", port);
@@ -20,8 +23,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(methodOverride());
-app.use("/dist/frontend", express.static(path.join(__dirname, "..", "frontend")));
-console.log("Path: ", path.join(__dirname, "..", "frontend"));
+app.use("/dist/frontend", express.static(path.join(__dirname, "..", "..", "dist", "frontend")));
+console.log("Path: ", path.join(__dirname, "..", "..", "dist", "frontend"));
 
 routes(app);
 

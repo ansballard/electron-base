@@ -6,9 +6,9 @@ function HomeController(ApiService) {
 
   const vm = this;
 
-  ApiService.getRepos()
-    .then((repos) => {
-      vm.repoList = repos;
+  ApiService.getCommits()
+    .then((commits) => {
+      vm.commitList = commits;
     })
     .catch((error) => {
       console.log("Error: ", error);

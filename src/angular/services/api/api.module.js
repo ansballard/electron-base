@@ -1,4 +1,4 @@
 import ApiService from "./api.service";
 
-angular.module("electron-base.api", [])
+angular.module("app.api", [])
   .factory("ApiService", ApiService);

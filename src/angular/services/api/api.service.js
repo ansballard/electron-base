@@ -4,10 +4,10 @@ export default ApiService;
 
 function ApiService($http) {
   return {
-    getRepos() {
-      return $http.get("https://api.github.com/users/ansballard/repos")
+    getCommits() {
+      return $http.get("https://api.github.com/repos/ansballard/electron-base/commits")
         .then((response) => response.data
-          .map((repo) => repo.name)
+          .map((commit) => commit.url)
         );
       ;
     }

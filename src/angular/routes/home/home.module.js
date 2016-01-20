@@ -1,4 +1,4 @@
 import HomeController from "./home.controller";
 
-angular.module("electron-base.home", [])
+angular.module("app.home", [])
   .controller("HomeController", HomeController);

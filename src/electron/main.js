@@ -1,6 +1,8 @@
 import electron from "electron";
 import {ipcMain as ipc, app, BrowserWindow} from "electron";
 
+import { sum } from "../utilities";
+
 let mainWindow = null;
 
 app.on("window-all-closed", () => {

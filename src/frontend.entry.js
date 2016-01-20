@@ -1,2 +1,3 @@
-/* Replace electron-base with your app name */
-require("./angular/electron-base.module");
+require("bootstrap/dist/css/bootstrap.css");
+
+require("./angular/app.module");
